@@ -38,17 +38,17 @@ class hubot::params {
     /Ubuntu|Debian/: {
       $hubot_init         = "hubot.init.${::operatingsystem}.erb"
       $nodejs_manage_repo = true
-      $hubot_init_dir     = '/etc/init.d/hubot'
+      $hubot_init_file    = '/etc/init.d/hubot'
     }
     /CentOS/: {
       $hubot_init         = 'hubot.service.erb'
       $nodejs_manage_repo = true
-      $hubot_init_dir     = '/usr/lib/systemd/system'
+      $hubot_init_file    = '/usr/lib/systemd/system'
     }
     default: {
       $hubot_init         = 'hubot.init.erb'
       $nodejs_manage_repo = false
-      $hubot_init_dir     = '/etc/init.d/hubot'
+      $hubot_init_file    = '/etc/init.d/hubot'
     }
   }
 }
