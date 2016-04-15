@@ -43,7 +43,7 @@ class hubot::params {
     /CentOS/: {
       $hubot_init         = 'hubot.service.erb'
       $nodejs_manage_repo = true
-      $hubot_init_file    = '/usr/lib/systemd/system'
+      $hubot_init_file    = '/usr/lib/systemd/system/hubot.service'
     }
     default: {
       $hubot_init         = 'hubot.init.erb'
