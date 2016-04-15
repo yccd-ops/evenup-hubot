@@ -14,7 +14,7 @@
 # Copyright 2013 EvenUp.
 #
 class hubot::params {
-  $hubot_version        = '2.8.3'
+  $hubot_version        = '2.18.0'
   $root_dir             = '/opt/hubot'
   $bot_name             = 'hubot'
   $display_name         = 'hubot'
@@ -38,10 +38,17 @@ class hubot::params {
     /Ubuntu|Debian/: {
       $hubot_init         = "hubot.init.${::operatingsystem}.erb"
       $nodejs_manage_repo = true
+      $hubot_init_dir     = '/etc/init.d/hubot'
+    }
+    /CentOS/: {
+      $hubot_init         = 'hubot.service.erb'
+      $nodejs_manage_repo = true
+      $hubot_init_dir     = '/usr/lib/systemd/system'
     }
     default: {
       $hubot_init         = 'hubot.init.erb'
       $nodejs_manage_repo = false
+      $hubot_init_dir     = '/etc/init.d/hubot'
     }
   }
 }
