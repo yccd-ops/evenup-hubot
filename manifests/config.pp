@@ -23,7 +23,7 @@ class hubot::config {
   $scripts = $::hubot::scripts
   $external_scripts = $::hubot::external_scripts
   $dependencies = $::hubot::dependencies
-  file { $hubot::params::hubot_init_dir:
+  file { $hubot::params::hubot_init_file:
     ensure  => 'file',
     owner   => 'root',
     group   => 'root',
