@@ -1,0 +1,19 @@
+[Unit]
+Description=Hubot
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=<%= scope.lookupvar('hubot::root_dir') %>/<%= scope.lookupvar('hubot::bot_name') %>
+User=hubot
+
+Restart=always
+RestartSec=10
+
+EnvironmentFile=-<%= scope.lookupvar('hubot::root_dir') %>/<%= scope.lookupvar('hubot::bot_name') %>/hubot.env
+
+ExecStart=<%= scope.lookupvar('hubot::root_dir') %>/<%= scope.lookupvar('hubot::bot_name') %>/bin/hubot --adapter <%= scope.lookupvar('hubot::adapter') %>
+
+[Install]
+WantedBy=multi-user.target
